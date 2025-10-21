@@ -8,11 +8,10 @@ def create_app():
 	db.init_app(app)
 
     # Register blueprints/endpoints
-	from .routes.auth_user import bp_user
+	from app.routes.auth_user import bp_user
 	app.register_blueprint(bp_user)
 
-	# Criaçao do banco de dados
-    
+	# Criaçao do banco de dados    
 	with app.app_context():
 		db.create_all()
 	return app
