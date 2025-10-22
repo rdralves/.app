@@ -43,3 +43,10 @@ def login():
         return jsonify({'message': 'Credenciais inválidas!'})
 
     return render_template('login.html')
+
+
+@bp_user.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('bp_user.login'))
