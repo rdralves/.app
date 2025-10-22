@@ -2,7 +2,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 from flask import Blueprint, render_template, request, jsonify, redirect, url_for
 from flask_login import LoginManager
 from app.models.model import User, db
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 login_manager = LoginManager()
@@ -22,8 +22,10 @@ def register():
         email = request.form.get('email')
 
         print(f"Registrando usuário: {username}, Email: {email}")
+        hashed_password = generate_password_hash(
+            password, method='pbkdf2:sha256', salt_length=8)
 
-        user = User(name=username, password=password, email=email)
+        user = User(name=username, password=hashed_password, email=email)
         db.session.add(user)
         db.session.commit()
         return jsonify({'message': 'Usuário registrado com sucesso!'})
@@ -36,8 +38,8 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
 
-        user = User.query.filter_by(email=email, password=password).first()
-        if user:
+        user = User.query.filter_by(email=email).first()
+        if user and check_password_hash(user.password, password):
             login_user(user)
             return jsonify({'message': 'Login bem-sucedido!'})
         return jsonify({'message': 'Credenciais inválidas!'})
