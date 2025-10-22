@@ -15,7 +15,7 @@ def register():
         username = request.form.get('username')
         password = request.form.get('password')
         email = request.form.get('email')
-        
+
         print(f"Registrando usuário: {username}, Email: {email}")
 
         user = User(name=username, password=password, email=email)
@@ -23,3 +23,18 @@ def register():
         db.session.commit()
         return jsonify({'message': 'Usuário registrado com sucesso!'})
     return render_template('register.html')
+
+@bp_user.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        user = User.query.filter_by(email=email, password=password).first()
+        if user:
+            return jsonify({'message': 'Login bem-sucedido!'})
+        return jsonify({'message': 'Credenciais inválidas!'})
+    
+    return render_template('login.html')
+
+
