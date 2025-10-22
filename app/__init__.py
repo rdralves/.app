@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, app
 from flask_login import LoginManager
 from .models.model import db,User
 
@@ -20,7 +20,9 @@ def create_app():
 
 
     # Register blueprints/endpoints
+	from app.routes.main import bp_main
 	from app.routes.auth_user import bp_user
+	app.register_blueprint(bp_main)
 	app.register_blueprint(bp_user)
 
 	# Criaçao do banco de dados    
