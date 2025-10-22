@@ -1,6 +1,10 @@
 from flask import Blueprint, render_template, request, jsonify, redirect, url_for
+from flask_login import LoginManager
 from app.models.model import User, db
+from app import app
 
+
+login_manager = LoginManager()
 bp_user = Blueprint('bp_user', __name__, url_prefix='/auth_user')
 
 
@@ -24,6 +28,7 @@ def register():
         return jsonify({'message': 'Usuário registrado com sucesso!'})
     return render_template('register.html')
 
+
 @bp_user.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -34,7 +39,5 @@ def login():
         if user:
             return jsonify({'message': 'Login bem-sucedido!'})
         return jsonify({'message': 'Credenciais inválidas!'})
-    
+
     return render_template('login.html')
-
-
