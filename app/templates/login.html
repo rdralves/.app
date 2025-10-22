@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
     <h1>Login</h1>
     <form action="{{ url_for('bp_user.login') }}" method="post">
         <input type="email" name="email" placeholder="Email" required><br><br>
@@ -13,5 +10,4 @@
         <button type="submit">Login</button>
     </form>
     <p><a href="{{ url_for('bp_user.register') }}">Registrar Aqui!</a></p>
-</body>
-</html>
+{% endblock %}
