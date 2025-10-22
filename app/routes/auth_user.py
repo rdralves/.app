@@ -6,7 +6,7 @@ bp_user = Blueprint('bp_user', __name__, url_prefix='/auth_user')
 
 @bp_user.route('/')
 def home():
-    return "Bem vindo à página de autenticação/cadastro dos usuários!"
+    return "Bem vindo à página de autenticação/cadastro dos usuários! "
 
 
 @bp_user.route('/register', methods=['GET', 'POST'])
