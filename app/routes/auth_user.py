@@ -1,3 +1,4 @@
+from flask_login import login_user, logout_user, login_required, current_user
 from flask import Blueprint, render_template, request, jsonify, redirect, url_for
 from flask_login import LoginManager
 from app.models.model import User, db
@@ -37,6 +38,7 @@ def login():
 
         user = User.query.filter_by(email=email, password=password).first()
         if user:
+            login_user(user)
             return jsonify({'message': 'Login bem-sucedido!'})
         return jsonify({'message': 'Credenciais inválidas!'})
 
