@@ -11,9 +11,11 @@
 </head>
 
 <body>
-    <h1>Hello-Bootstrap</h1>
+    <h1>Hello-Usuário</h1>
+    <p>Bem-vindo à página de cadastro!</p>
+    <p><a href="{{ url_for('bp_user.login') }}">Login Aqui!</a></p>
 </body>
-<h1>ola register</h1>
+
 <form action="{{ url_for('bp_user.register') }}" method="post">
     <input type="text" name="username" placeholder="Username"><br><br>
     <input type="password" name="password" placeholder="Password"><br><br>
