@@ -1,6 +1,6 @@
 # AuthApp: Sistema Básico de Autenticação com Flask
 
-[![Python](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/) [![Flask](https://img.shields.io/badge/Flask-2.3-green.svg)](https://flask.palletsprojects.com/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/) [![Flask](https://img.shields.io/badge/Flask-3.1.2-green.svg)](https://flask.palletsprojects.com/) 
 
 ## 🚀 Visão Geral
 Um aplicativo web simples e seguro construído com Flask para gerenciar autenticação de usuários. Inclui funcionalidades essenciais como cadastro (register), login e logout, com armazenamento de senhas hasheadas para segurança. Ideal como base para projetos maiores em desenvolvimento web, como sistemas de gestão ou apps de logística – demonstra conhecimentos em backend Python, rotas RESTful e integração com banco de dados.
