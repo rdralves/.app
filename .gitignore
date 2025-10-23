@@ -6,3 +6,4 @@ instances/
 .DS_Store
 *.sqlite3
 *.db
+migrations/

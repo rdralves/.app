@@ -1,6 +1,8 @@
 from flask import Flask, app
 from flask_login import LoginManager
 from .models.model import db,User
+from flask_migrate import Migrate
+
 
 
 def create_app():
@@ -9,6 +11,7 @@ def create_app():
 	app.config['SECRET_KEY'] = 'your_secret_key'
 
 	db.init_app(app)
+	migrate = Migrate(app, db)
 
 	login_manager = LoginManager()
 	login_manager.init_app(app)
