@@ -6,7 +6,7 @@
 Um aplicativo web simples e seguro construído com Flask para gerenciar autenticação de usuários. Inclui funcionalidades essenciais como cadastro (register), login e logout, com armazenamento de senhas hasheadas para segurança. Ideal como base para projetos maiores em desenvolvimento web, como sistemas de gestão ou apps de logística – demonstra conhecimentos em backend Python, rotas RESTful e integração com banco de dados.
 
 **Por que isso é útil?**  
-- Foco em segurança: Usa bcrypt ou werkzeug para hash de senhas.  
+- Foco em segurança: Usa werkzeug para hash de senhas.  
 - Estrutura modular: Fácil de estender para features como dashboards ou APIs.  
 - Aplicações reais: Pode ser integrado a projetos de logística (ex: autenticação para rastreamento de entregas) ou mobilidade (ex: login para apps de frota).  
 
@@ -36,7 +36,7 @@ Um aplicativo web simples e seguro construído com Flask para gerenciar autentic
 
 ## 🏗️ Como Rodar Localmente
 1. Clone o repositório:  
-    git clone https://github.com/rdralves/app.git
+    git clone https://github.com/rdralves/.app
     cd app
 
 
@@ -52,11 +52,6 @@ Um aplicativo web simples e seguro construído com Flask para gerenciar autentic
     python run.py
     Acesse em http://localhost:5000/register para testar!
 
-## 🔧 Extensões Sugeridas
-- Adicione JWT para autenticação API-based.  
-- Integre com frontend Vue.js ou React para um SPA.  
-- Expanda para um dashboard de usuário, como em sistemas de logística (inspirado em empresas como GoldLog Brazil).  
-
 ## 🤝 Contribuições
 Sinta-se à vontade para fork e enviar PRs! Estou aberto a melhorias, como adicionar testes com pytest ou deploy no Heroku/Docker.  
 
@@ -64,6 +59,5 @@ Sinta-se à vontade para fork e enviar PRs! Estou aberto a melhorias, como adici
 - LinkedIn: https://www.linkedin.com/in/rodrigoalvesreis/
 
 
-## 📄 Licença
-Este projeto está licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
 
