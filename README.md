@@ -53,7 +53,7 @@ Um aplicativo web simples e seguro construído com Flask para gerenciar autentic
     Acesse em http://localhost:5000/register para testar!
 
 ## 🤝 Contribuições
-Sinta-se à vontade para fork e enviar PRs! Estou aberto a melhorias, como adicionar testes com pytest ou deploy no Heroku/Docker.  
+Sinta-se à vontade para fork e enviar PRs! Estou aberto a melhorias, como adicionar testes com pytest ou deploy.  
 
 ## 📫 Contato
 - LinkedIn: https://www.linkedin.com/in/rodrigoalvesreis/
