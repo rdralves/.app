@@ -10,8 +10,17 @@ Um aplicativo web simples e seguro construído com Flask para gerenciar autentic
 - Estrutura modular: Fácil de estender para features como dashboards ou APIs.  
 - Aplicações reais: Pode ser integrado a projetos de logística (ex: autenticação para rastreamento de entregas) ou mobilidade (ex: login para apps de frota).  
 
-![Demo GIF](https://via.placeholder.com/800x400?text=Demo+do+Login+e+Register)  
-*(Adicione um GIF real aqui mostrando o fluxo de cadastro e login!)*
+## 🎥 Demonstração
+
+### Home 
+![Home](screenshots/tela_inicial.png)
+
+### Tela de Cadastro
+![Tela de Cadastro](screenshots/register.png)
+
+### Tela de Login
+![Tela de Login](screenshots/login.png)
+
 
 ## 🛠️ Tech Stack
 - **Backend**: Flask, Flask-Login (para sessões), Werkzeug (para segurança).  
