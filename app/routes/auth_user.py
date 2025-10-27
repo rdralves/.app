@@ -27,7 +27,7 @@ def register():
             password, method='pbkdf2:sha256', salt_length=8)
 
         user = User(name=username, password=hashed_password, email=email)
-        
+
         try:
             db.session.add(user)
             db.session.commit()
@@ -46,14 +46,14 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-        
+
         try:
             user = User.query.filter_by(email=email).first()
             if user and check_password_hash(user.password, password):
                 login_user(user)
-                return jsonify({'message': 'Login bem-sucedido!'})
+                return flash('Login realizado com sucesso!', 'success')
         except Exception as e:
-            return jsonify({'message': f'Erro ao fazer login: {str(e)}'})
+            flash(f'Erro ao fazer login: {str(e)}', 'error')
 
     return render_template('login.html')
 
