@@ -33,11 +33,14 @@ def register():
             db.session.commit()
         except IntegrityError:
             db.session.rollback()
-            return flash('Erro: Nome de usuário ou email já existe.', 'error')
+            flash('Erro: Nome de usuário ou email já existe.', 'error')
+            return render_template('register.html')
         except Exception as e:
             db.session.rollback()
-            flash(f'Erro ao registrar usuário: {str(e)}', 'error')
+            flash(f'Erro ao registrar usuário: Usuário já existe.', 'error')
+            return render_template('register.html')
         flash('Usuário registrado com sucesso!', 'success')
+        return redirect(url_for('bp_user.login'))
     return render_template('register.html')
 
 
@@ -52,7 +55,7 @@ def login():
             if user and check_password_hash(user.password, password):
                 login_user(user)
                 flash('Login realizado com sucesso!', 'success')
-                return redirect(url_for('bp_main.index')) # Adicione a rota para a página do seu sistema aqui!
+                return redirect(url_for('bp_main.dashboard')) # Adicione a rota para a página do seu sistema aqui!
         except Exception as e:
             flash(f'Erro ao fazer login: {str(e)}', 'error')
 
@@ -64,3 +67,6 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('bp_user.login'))
+
+
+
