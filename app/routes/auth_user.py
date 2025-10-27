@@ -46,12 +46,14 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-
-        user = User.query.filter_by(email=email).first()
-        if user and check_password_hash(user.password, password):
-            login_user(user)
-            return jsonify({'message': 'Login bem-sucedido!'})
-        return jsonify({'message': 'Credenciais inválidas!'})
+        
+        try:
+            user = User.query.filter_by(email=email).first()
+            if user and check_password_hash(user.password, password):
+                login_user(user)
+                return jsonify({'message': 'Login bem-sucedido!'})
+        except Exception as e:
+            return jsonify({'message': f'Erro ao fazer login: {str(e)}'})
 
     return render_template('login.html')
 
