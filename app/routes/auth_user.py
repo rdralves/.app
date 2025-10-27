@@ -51,7 +51,8 @@ def login():
             user = User.query.filter_by(email=email).first()
             if user and check_password_hash(user.password, password):
                 login_user(user)
-                return flash('Login realizado com sucesso!', 'success')
+                flash('Login realizado com sucesso!', 'success')
+                return redirect(url_for('bp_main.index')) # Adicione a rota para a página do seu sistema aqui!
         except Exception as e:
             flash(f'Erro ao fazer login: {str(e)}', 'error')
 
