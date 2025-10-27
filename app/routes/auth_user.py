@@ -1,6 +1,6 @@
 from sqlite3 import IntegrityError
 from flask_login import login_user, logout_user, login_required, current_user
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash
 from flask_login import LoginManager
 from app.models.model import User, db
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -33,11 +33,11 @@ def register():
             db.session.commit()
         except IntegrityError:
             db.session.rollback()
-            return jsonify({'message': 'Erro: Usuário ou email já existe!'})
+            return flash('Erro: Nome de usuário ou email já existe.', 'error')
         except Exception as e:
             db.session.rollback()
-            return jsonify({'message': f'Erro ao registrar usuário: {str(e)}'})
-        return jsonify({'message': 'Usuário registrado com sucesso!'})
+            flash(f'Erro ao registrar usuário: {str(e)}', 'error')
+        flash('Usuário registrado com sucesso!', 'success')
     return render_template('register.html')
 
 
