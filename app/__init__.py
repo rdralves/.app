@@ -25,8 +25,10 @@ def create_app():
     # Register blueprints/endpoints
 	from app.routes.main import bp_main
 	from app.routes.auth_user import bp_user
+	from app.routes.veiculos_routes import veiculos_bp
 	app.register_blueprint(bp_main)
 	app.register_blueprint(bp_user)
+	app.register_blueprint(veiculos_bp)
 
 	# Criaçao do banco de dados    
 	with app.app_context():
