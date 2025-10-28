@@ -1,6 +1,7 @@
 from flask import Flask, app
 from flask_login import LoginManager
 from .models.model import db,User
+from .models.veiculos import Veiculo, VeiculoStatus
 from flask_migrate import Migrate
 
 
