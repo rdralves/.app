@@ -1,4 +1,4 @@
-from model import db
+from app.models.model import db
 import enum
 
 class VeiculoStatus(enum.Enum):
