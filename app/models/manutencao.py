@@ -7,7 +7,7 @@ class Manutencao(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     veiculo_id = db.Column(db.Integer, db.ForeignKey(
-        'veiculo.id'), nullable=False)
+        'veiculos.id'), nullable=False)
     tipo = db.Column(db.String(50))  # Preventiva / Corretiva
     descricao = db.Column(db.String(200))
     data = db.Column(db.Date, default=datetime.utcnow)
