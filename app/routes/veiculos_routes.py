@@ -48,3 +48,13 @@ def editar_veiculo(veiculo_id):
         flash('Veículo editado com sucesso!', 'success')
         return redirect(url_for('veiculos.listar_veiculos'))
     return render_template('veiculos/form.html', vehicle=veiculo)
+
+
+@veiculos_bp.route('/deletar/<int:veiculo_id>', methods=['POST'])
+@login_required
+def deletar_veiculo(veiculo_id):
+    veiculo = Veiculo.query.get_or_404(veiculo_id)
+    db.session.delete(veiculo)
+    db.session.commit()
+    flash('Veículo excluído com sucesso!', 'success')
+    return redirect(url_for('veiculos.listar_veiculos'))
