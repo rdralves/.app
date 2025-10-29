@@ -6,32 +6,32 @@
     <div class="row">
         <div class="col-md-4 mb-3">
             <label>Placa</label>
-            <input type="text" name="plate" class="form-control" value="{{ vehicle.plate if vehicle else '' }}"
+            <input type="text" name="placa" class="form-control" value="{{ vehicle.placa if vehicle else '' }}"
                 required>
         </div>
         <div class="col-md-4 mb-3">
             <label>Marca</label>
-            <input type="text" name="brand" class="form-control" value="{{ vehicle.brand if vehicle else '' }}">
+            <input type="text" name="marca" class="form-control" value="{{ vehicle.marca if vehicle else '' }}">
         </div>
         <div class="col-md-4 mb-3">
             <label>Modelo</label>
-            <input type="text" name="model" class="form-control" value="{{ vehicle.model if vehicle else '' }}">
+            <input type="text" name="modelo" class="form-control" value="{{ vehicle.modelo if vehicle else '' }}">
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-3 mb-3">
             <label>Ano</label>
-            <input type="number" name="year" class="form-control" value="{{ vehicle.year if vehicle else '' }}">
+            <input type="number" name="ano" class="form-control" value="{{ vehicle.ano if vehicle else '' }}">
         </div>
         <div class="col-md-3 mb-3">
             <label>Tipo</label>
-            <input type="text" name="vehicle_type" class="form-control"
-                value="{{ vehicle.vehicle_type if vehicle else '' }}">
+            <input type="text" name="tipo_veiculo" class="form-control"
+                value="{{ vehicle.tipo_veiculo if vehicle else '' }}">
         </div>
         <div class="col-md-3 mb-3">
             <label>Km atual</label>
-            <input type="number" name="mileage" class="form-control" value="{{ vehicle.mileage if vehicle else '' }}">
+            <input type="number" name="kilometragem" class="form-control" value="{{ vehicle.kilometragem if vehicle else '' }}">
         </div>
         <div class="col-md-3 mb-3">
             <label>Status</label>
@@ -44,6 +44,6 @@
     </div>
 
     <button class="btn btn-primary">{{ 'Atualizar' if vehicle else 'Salvar' }}</button>
-   
+    <a href="{{ url_for('veiculos.listar_veiculos') }}" class="btn btn-secondary">Voltar</a>
 </form>
 {% endblock %}

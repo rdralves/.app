@@ -1,30 +1,50 @@
 {% extends "base.html" %}
-
 {% block content %}
-<div class="container mt-4">
-    <h1 class="mb-4">Lista de Veículos</h1>
-    <a href="{{ url_for('veiculos.adicionar_veiculo') }}" class="btn btn-primary mb-3">Adicionar Veículo</a>
-    <div class="table-responsive">
-        <table class="table table-striped table-hover table-bordered">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Modelo</th>
-                    <th>Ano</th>
-                    <th>Placa</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for veiculo in veiculos %}
-                <tr>
-                    <td>{{ veiculo.id }}</td>
-                    <td>{{ veiculo.modelo }}</td>
-                    <td>{{ veiculo.ano }}</td>
-                    <td>{{ veiculo.placa }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>🚗 Veículos Cadastrados</h3>
+    <a href="{{ url_for('veiculos.adicionar_veiculo') }}" class="btn btn-success">
+        + Novo Veículo
+    </a>
 </div>
+
+{% if veiculos %}
+<table class="table table-striped table-hover align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>Placa</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Ano</th>
+            <th>Km</th>
+            <th>Status</th>
+            <th class="text-center">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for v in veiculos %}
+        <tr>
+            <td>{{ v.placa }}</td>
+            <td>{{ v.marca }}</td>
+            <td>{{ v.modelo }}</td>
+            <td>{{ v.ano }}</td>
+            <td>{{ v.kilometragem }}</td>
+            <td>{{ v.status.value }}</td>
+            <td class="text-center">
+                <!-- Botão Atualizar -->
+                <a href="{{ url_for('veiculos.editar_veiculo', veiculo_id=v.id) }}" class="btn btn-sm btn-warning">
+                    <i class="bi bi-pencil-square"></i> Atualizar
+                </a>
+
+                <!-- Botão Excluir -->
+               
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Nenhum veículo cadastrado ainda.</p>
+{% endif %}
+
 {% endblock %}

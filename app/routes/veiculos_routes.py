@@ -33,16 +33,16 @@ def adicionar_veiculo():
 
 @veiculos_bp.route('/editar/<int:veiculo_id>', methods=['GET', 'POST'])
 @login_required 
-def editar_veiculo(id):
-    veiculo = Veiculo.query.get_or_404(id)
+def editar_veiculo(veiculo_id):
+    veiculo = Veiculo.query.get_or_404(veiculo_id)
     if request.method == 'POST':
         # Lógica para editar o veículo
-        veiculo.placa = request.form['plate']
-        veiculo.marca = request.form['brand']
-        veiculo.modelo = request.form['model']
-        veiculo.ano = request.form['year']
-        veiculo.tipo_veiculo = request.form['vehicle_type']
-        veiculo.kilometragem = request.form['mileage']
+        veiculo.placa = request.form['placa']
+        veiculo.marca = request.form['marca']
+        veiculo.modelo = request.form['modelo']
+        veiculo.ano = request.form['ano']
+        veiculo.tipo_veiculo = request.form['tipo_veiculo']
+        veiculo.kilometragem = request.form['kilometragem']
         veiculo.status = VeiculoStatus[request.form['status']]
         db.session.commit()
         flash('Veículo editado com sucesso!', 'success')
