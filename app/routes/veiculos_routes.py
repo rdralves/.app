@@ -21,8 +21,8 @@ def adicionar_veiculo():
             marca=request.form['brand'],
             modelo=request.form['model'],
             ano=request.form['year'],
-            tipo=request.form['vehicle_type'],
-            km_atual=request.form['mileage'],
+            tipo_veiculo=request.form['vehicle_type'],
+            kilometragem=request.form['mileage'],
             status=VeiculoStatus[request.form['status']]
         )
         db.session.add(novo_veiculo)
