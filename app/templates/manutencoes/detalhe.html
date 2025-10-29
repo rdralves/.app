@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Detalhes da Manutenção</h3>
+
+<table class="table">
+    <tr>
+        <th>Veículo</th>
+        <td>{{ manutencao.veiculo.placa }} - {{ manutencao.veiculo.modelo }}</td>
+    </tr>
+    <tr>
+        <th>Tipo</th>
+        <td>{{ manutencao.tipo }}</td>
+    </tr>
+    <tr>
+        <th>Data</th>
+        <td>{{ manutencao.data.strftime('%d/%m/%Y') }}</td>
+    </tr>
+    <tr>
+        <th>Km</th>
+        <td>{{ manutencao.km_realizada }}</td>
+    </tr>
+    <tr>
+        <th>Custo</th>
+        <td>R$ {{ "%.2f"|format(manutencao.custo or 0) }}</td>
+    </tr>
+    <tr>
+        <th>Descrição</th>
+        <td>{{ manutencao.descricao }}</td>
+    </tr>
+    <tr>
+        <th>Próxima (km)</th>
+        <td>{{ manutencao.proxima_manutencao_km or '-' }}</td>
+    </tr>
+    <tr>
+        <th>Próxima (data)</th>
+        <td>{{ manutencao.proxima_manutencao_data.strftime('%d/%m/%Y') if manutencao.proxima_manutencao_data else '-' }}
+        </td>
+    </tr>
+</table>
+
+<a href="{{ url_for('manutencoes.listar_manutencoes') }}" class="btn btn-secondary">Voltar</a>
+{% endblock %}
