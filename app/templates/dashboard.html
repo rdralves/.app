@@ -5,7 +5,19 @@
 {% block content %}
 <div class="neon-border">
     <h2 class="text-center mb-4">Painel de Gestão de Frota</h2>
-    <a href="{{ url_for('veiculos.listar_veiculos') }}" class="btn btn-primary mb-3">Listar Veículos</a><br><br>
-    <a href="{{ url_for('veiculos.adicionar_veiculo') }}" class="btn btn-primary mb-3">Adicionar Veículo</a>
-</div>
-{% endblock %}
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <a href="{{ url_for('veiculos.listar_veiculos') }}" class="btn btn-primary mb-3">Listar Veículos</a><br><br>
+            <a href="{{ url_for('veiculos.adicionar_veiculo') }}" class="btn btn-primary mb-3">Adicionar
+                Veículo</a><br><br>
+
+        </div>
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <a href="{{ url_for('manutencoes.listar_manutencoes') }}" class="btn btn-primary mb-3">Listar
+                    Manutenção</a><br><br>
+                <a href="{{ url_for('manutencoes.nova_manutencao') }}" class="btn btn-primary mb-3">Adcionar
+                    Manutenção</a><br><br>
+            </div>
+        </div>
+        {% endblock %}
