@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Novo Motorista</h3>
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label>Nome</label>
+            <input type="text" name="nome" class="form-control" required>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label>CPF</label>
+            <input type="text" name="cpf" class="form-control" required>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label>Telefone</label>
+            <input type="text" name="telefone" class="form-control">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label>CNH</label>
+            <input type="text" name="cnh" class="form-control" required>
+        </div>
+        <div class="col-md-2 mb-3">
+            <label>Categoria</label>
+            <input type="text" name="categoria_cnh" class="form-control">
+        </div>
+    </div>
+
+    <button class="btn btn-primary">Salvar</button>
+    <a href="{{ url_for('motoristas.listar_motoristas') }}" class="btn btn-secondary">Voltar</a>
+</form>
+{% endblock %}
