@@ -28,6 +28,10 @@ def create_app():
 	from app.routes.auth_user import bp_user
 	from app.routes.veiculos_routes import veiculos_bp
 	from app.manutencoes.routes import manutencoes_bp
+	from app.motoristas.motoristas_routes import motoristas_bp
+
+
+	app.register_blueprint(motoristas_bp)
 
 
 	app.register_blueprint(manutencoes_bp)
