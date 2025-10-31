@@ -9,7 +9,7 @@ class UsoVeiculo(db.Model):
     motorista_id = db.Column(db.Integer, db.ForeignKey(
         'motoristas.id'), nullable=False)
     veiculo_id = db.Column(db.Integer, db.ForeignKey(
-        'veiculo.id'), nullable=False)
+        'veiculos.id'), nullable=False)
     data_inicio = db.Column(db.DateTime, default=datetime.utcnow)
     data_fim = db.Column(db.DateTime)
     observacoes = db.Column(db.String(200))
