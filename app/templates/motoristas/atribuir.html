@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Atribuir Veículo a Motorista</h3>
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label>Motorista</label>
+            <select name="motorista_id" class="form-select" required>
+                {% for m in motoristas %}
+                <option value="{{ m.id }}">{{ m.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label>Veículo</label>
+            <select name="veiculo_id" class="form-select" required>
+                {% for v in veiculos %}
+                <option value="{{ v.id }}">{{ v.placa }} - {{ v.modelo }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label>Data Início</label>
+            <input type="date" name="data_inicio" class="form-control" required>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label>Observações</label>
+        <textarea name="observacoes" class="form-control"></textarea>
+    </div>
+
+    <button class="btn btn-success">Atribuir</button>
+    <a href="{{ url_for('motoristas.listar_motoristas') }}" class="btn btn-secondary">Voltar</a>
+</form>
+{% endblock %}
