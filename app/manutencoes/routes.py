@@ -38,7 +38,7 @@ def nova_manutencao():
     return render_template('manutencoes/form.html', veiculos=veiculos)
 
 
-@manutencoes_bp.route('/<int:id>')
+@manutencoes_bp.route('/detalhe/<int:id>')
 @login_required
 def detalhe_manutencao(id):
     manutencao = Manutencao.query.get_or_404(id)
