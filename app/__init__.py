@@ -40,7 +40,11 @@ def create_app():
     app.register_blueprint(bp_user)
     app.register_blueprint(veiculos_bp)
 
-    # Criaçao do banco de dados
+    from app.tasks.scheduler import iniciar_scheduler
+
+    iniciar_scheduler(app)
+
+# Criaçao do banco de dados
     with app.app_context():
         db.create_all()
     return app
