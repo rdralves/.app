@@ -15,6 +15,9 @@ class Manutencao(db.Model):
     custo = db.Column(db.Float)
     proxima_manutencao_km = db.Column(db.Integer)
     proxima_manutencao_data = db.Column(db.Date)
+    status = db.Column(db.String(20), nullable=True)
+
+
 
     veiculo = db.relationship('Veiculo', backref='manutencoes', lazy=True)
 

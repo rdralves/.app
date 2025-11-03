@@ -35,10 +35,8 @@ def index():
 
     return render_template(
         'dashboard/index.html',
-        total_veiculos=total_veiculos,
-        motoristas_ativos=motoristas_ativos,
-        manutencoes_pendentes=manutencoes_pendentes,
-        usos_ativos=usos_ativos,
-        top_veiculos_labels=top_veiculos_labels,
-        top_veiculos_data=top_veiculos_data
+        total_veiculos=Veiculo.query.count(),
+        total_motoristas=Motorista.query.count(),
+        veiculos_manutencao=Veiculo.query.filter_by(
+            status='EM_MANUTENCAO').count()
     )
