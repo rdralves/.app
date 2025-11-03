@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<h3 class="mb-4">📊 Painel de Controle da Frota</h3>
+
+<div class="row text-center mb-4">
+    <div class="col-md-3">
+        <div class="card shadow-sm p-3 bg-primary text-white">
+            <h5>Total de Veículos</h5>
+            <h3>{{ total_veiculos }}</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm p-3 bg-success text-white">
+            <h5>Motoristas Ativos</h5>
+            <h3>{{ motoristas_ativos }}</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm p-3 bg-warning text-dark">
+            <h5>Manutenções Pendentes</h5>
+            <h3>{{ manutencoes_pendentes }}</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm p-3 bg-info text-white">
+            <h5>Veículos em Uso</h5>
+            <h3>{{ usos_ativos }}</h3>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm p-4">
+    <h5 class="mb-3">🚘 Veículos Mais Utilizados</h5>
+    <canvas id="chartVeiculosMaisUsados"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('chartVeiculosMaisUsados').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {{ top_veiculos_labels | safe }},
+    datasets: [{
+        label: 'Número de usos',
+        data: {{ top_veiculos_data | safe }},
+        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: { beginAtZero: true }
+        }
+    }
+});
+</script>
+{% endblock %}
