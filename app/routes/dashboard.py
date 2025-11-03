@@ -6,6 +6,7 @@ from app.models.manutencao import Manutencao
 from app.models.uso_veiculo import UsoVeiculo
 from app import db
 from sqlalchemy import func
+from app.models.alerta import Alerta
 
 dashboard_bp = Blueprint('dashboard', __name__, url_prefix='/dashboard')
 
@@ -18,6 +19,7 @@ def index():
     manutencoes_pendentes = Manutencao.query.filter(
         Manutencao.status == 'PENDENTE').count()
     usos_ativos = UsoVeiculo.query.filter(UsoVeiculo.data_fim == None).count()
+    alertas_ativos = Alerta.query.filter_by(resolvido=False).limit(5).all()
 
     # Top 5 veículos mais usados
     top_veiculos = (
@@ -38,5 +40,6 @@ def index():
         total_veiculos=Veiculo.query.count(),
         total_motoristas=Motorista.query.count(),
         veiculos_manutencao=Veiculo.query.filter_by(
-            status='EM_MANUTENCAO').count()
+            status='EM_MANUTENCAO').count(),
+        alertas_ativos=alertas_ativos
     )

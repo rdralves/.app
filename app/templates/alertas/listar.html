@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<h3 class="mb-4">🚨 Alertas e Notificações</h3>
+
+{% if alertas %}
+<table class="table table-striped align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+            <th>Data</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in alertas %}
+        <tr class="{% if a.resolvido %}table-success{% endif %}">
+            <td>{{ a.titulo }}</td>
+            <td>{{ a.descricao }}</td>
+            <td>{{ a.tipo }}</td>
+            <td>{{ a.data_alerta.strftime('%d/%m/%Y %H:%M') }}</td>
+            <td>{{ 'Resolvido' if a.resolvido else 'Pendente' }}</td>
+            <td>
+                {% if not a.resolvido %}
+                <a href="{{ url_for('alertas.resolver_alerta', id=a.id) }}" class="btn btn-success btn-sm">Resolver</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Nenhum alerta no momento 🚀</p>
+{% endif %}
+{% endblock %}
