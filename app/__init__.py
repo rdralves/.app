@@ -29,7 +29,9 @@ def create_app():
     from app.motoristas.motoristas_routes import motoristas_bp
     from app.routes.viagem import viagens_bp
     from app.routes.dashboard import dashboard_bp
+    from app.routes.alertas import alertas_bp
 
+    app.register_blueprint(alertas_bp)
     app.register_blueprint(dashboard_bp)
     app.register_blueprint(viagens_bp)
     app.register_blueprint(motoristas_bp)
