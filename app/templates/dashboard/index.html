@@ -33,6 +33,22 @@
     <h5 class="mb-3">🚘 Veículos Mais Utilizados</h5>
     <canvas id="chartVeiculosMaisUsados"></canvas>
 </div>
+<div class="card shadow-sm p-3 mt-4">
+    <h5>⚠️ Alertas Recentes</h5>
+    {% if alertas_ativos %}
+    <ul class="list-group">
+        {% for a in alertas_ativos %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{ a.titulo }} - {{ a.tipo }}</span>
+            <a href="{{ url_for('alertas.listar_alertas') }}" class="btn btn-sm btn-outline-danger">Ver</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="text-muted">Sem alertas no momento 🎉</p>
+    {% endif %}
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
