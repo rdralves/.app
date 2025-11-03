@@ -17,12 +17,12 @@ def adicionar_veiculo():
     if request.method == 'POST':
         # Lógica para adicionar um novo veículo
         novo_veiculo = Veiculo(
-            placa=request.form['plate'],
-            marca=request.form['brand'],
-            modelo=request.form['model'],
-            ano=request.form['year'],
-            tipo_veiculo=request.form['vehicle_type'],
-            kilometragem=request.form['mileage'],
+            placa=request.form['placa'],
+            marca=request.form['marca'],
+            modelo=request.form['modelo'],
+            ano=request.form['ano'],
+            tipo_veiculo=request.form['tipo_veiculo'],
+            kilometragem=request.form['kilometragem'],
             status=VeiculoStatus[request.form['status']]
         )
         db.session.add(novo_veiculo)
