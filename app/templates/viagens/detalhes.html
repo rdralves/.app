@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Detalhes da Viagem</h3>
+
+<table class="table">
+    <tr>
+        <th>Motorista</th>
+        <td>{{ viagem.motorista.nome }}</td>
+    </tr>
+    <tr>
+        <th>Veículo</th>
+        <td>{{ viagem.veiculo.placa }} - {{ viagem.veiculo.modelo }}</td>
+    </tr>
+    <tr>
+        <th>Origem</th>
+        <td>{{ viagem.origem }}</td>
+    </tr>
+    <tr>
+        <th>Destino</th>
+        <td>{{ viagem.destino }}</td>
+    </tr>
+    <tr>
+        <th>Data Saída</th>
+        <td>{{ viagem.data_saida.strftime('%d/%m/%Y %H:%M') }}</td>
+    </tr>
+    <tr>
+        <th>Data Retorno Prevista</th>
+        <td>{{ viagem.data_retorno_prevista.strftime('%d/%m/%Y %H:%M') if viagem.data_retorno_prevista else '-' }}</td>
+    </tr>
+    <tr>
+        <th>Data Retorno Real</th>
+        <td>{{ viagem.data_retorno_real.strftime('%d/%m/%Y %H:%M') if viagem.data_retorno_real else '-' }}</td>
+    </tr>
+    <tr>
+        <th>Status</th>
+        <td>{{ viagem.status }}</td>
+    </tr>
+    <tr>
+        <th>Km Saída</th>
+        <td>{{ viagem.km_saida }}</td>
+    </tr>
+    <tr>
+        <th>Km Retorno</th>
+        <td>{{ viagem.km_retorno or '-' }}</td>
+    </tr>
+    <tr>
+        <th>Observações</th>
+        <td>{{ viagem.observacoes or '-' }}</td>
+    </tr>
+</table>
+
+<a href="{{ url_for('viagens.listar_viagens') }}" class="btn btn-secondary">Voltar</a>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h3>🗺️ Viagens</h3>
+  <a href="{{ url_for('viagens.nova_viagem') }}" class="btn btn-success">+ Nova Viagem</a>
+</div>
+
+{% if viagens %}
+<table class="table table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Data Saída</th>
+      <th>Motorista</th>
+      <th>Veículo</th>
+      <th>Origem</th>
+      <th>Destino</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for v in viagens %}
+    <tr>
+      <td>{{ v.data_saida.strftime('%d/%m %H:%M') }}</td>
+      <td>{{ v.motorista.nome }}</td>
+      <td>{{ v.veiculo.placa }}</td>
+      <td>{{ v.origem }}</td>
+      <td>{{ v.destino }}</td>
+      <td>
+        {% if v.status == 'PENDENTE' %}
+          <span class="badge bg-warning text-dark">Pendente</span>
+        {% elif v.status == 'EM_ANDAMENTO' %}
+          <span class="badge bg-info text-dark">Em andamento</span>
+        {% elif v.status == 'CONCLUIDA' %}
+          <span class="badge bg-success">Concluída</span>
+        {% endif %}
+      </td>
+      <td>
+        <a href="{{ url_for('viagens.detalhes_viagem', id=v.id) }}" class="btn btn-sm btn-primary">Ver</a>
+        {% if v.status == 'PENDENTE' %}
+          <a href="{{ url_for('viagens.iniciar_viagem', id=v.id) }}" class="btn btn-sm btn-warning">Iniciar</a>
+        {% elif v.status == 'EM_ANDAMENTO' %}
+          <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#finalizarModal{{v.id}}">Finalizar</button>
+        {% endif %}
+      </td>
+    </tr>
+
+    <!-- Modal Finalizar -->
+    <div class="modal fade" id="finalizarModal{{v.id}}" tabindex="-1">
+      <div class="modal-dialog">
+        <form method="post" action="{{ url_for('viagens.finalizar_viagem', id=v.id) }}">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Finalizar Viagem</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <label>Km Retorno</label>
+              <input type="number" name="km_retorno" class="form-control" required>
+              <label>Data Retorno Real</label>
+              <input type="datetime-local" name="data_retorno_real" class="form-control mt-2" required>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Confirmar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Nenhuma viagem cadastrada ainda.</p>
+{% endif %}
+{% endblock %}

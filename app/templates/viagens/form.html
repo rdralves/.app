@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Agendar Viagem</h3>
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label>Motorista</label>
+            <select name="motorista_id" class="form-select" required>
+                {% for m in motoristas %}
+                <option value="{{ m.id }}">{{ m.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label>Veículo</label>
+            <select name="veiculo_id" class="form-select" required>
+                {% for v in veiculos %}
+                <option value="{{ v.id }}">{{ v.placa }} - {{ v.modelo }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label>Origem</label>
+            <input type="text" name="origem" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label>Destino</label>
+            <input type="text" name="destino" class="form-control" required>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label>Data Saída</label>
+            <input type="datetime-local" name="data_saida" class="form-control" required>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label>Data Retorno Prevista</label>
+            <input type="datetime-local" name="data_retorno_prevista" class="form-control">
+        </div>
+        <div class="col-md-4 mb-3">
+            <label>Km Saída</label>
+            <input type="number" name="km_saida" class="form-control">
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label>Observações</label>
+        <textarea name="observacoes" class="form-control"></textarea>
+    </div>
+
+    <button class="btn btn-primary">Salvar</button>
+    <a href="{{ url_for('viagens.listar_viagens') }}" class="btn btn-secondary">Voltar</a>
+</form>
+{% endblock %}
