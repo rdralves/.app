@@ -3,12 +3,18 @@ from flask_login import LoginManager
 from .models.model import db, User
 from .models.veiculos import Veiculo
 from flask_migrate import Migrate
-
+from dotenv import load_dotenv
+import os 
 
 def create_app():
+    load_dotenv()
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-    app.config['SECRET_KEY'] = 'your_secret_key'
+    
+    # Configurações vindas do .env
+    app.config['SECRET_KEY'] = os.getenv("SECRET_KEY", "chave-padrao")
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
+        "SQLALCHEMY_DATABASE_URI")
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
     migrate = Migrate(app, db)

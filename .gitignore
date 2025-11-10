@@ -7,3 +7,4 @@ instances/
 *.sqlite3
 *.db
 migrations/
+.env

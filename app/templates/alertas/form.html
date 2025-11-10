@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Novo Alerta</h3>
+
+<form method="post">
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label>Título</label>
+      <input type="text" name="titulo" class="form-control" required>
+    </div>
+    <div class="col-md-6">
+      <label>Tipo</label>
+      <select name="tipo" class="form-select" required>
+        <option value="MANUTENÇÃO">Manutenção</option>
+        <option value="DOCUMENTO">Documento</option>
+        <option value="OUTRO">Outro</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label>Descrição</label>
+    <textarea name="descricao" class="form-control" rows="3"></textarea>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label>Data de Disparo</label>
+      <input type="date" name="data_disparo" class="form-control">
+    </div>
+    <div class="col-md-6">
+      <label>Vincular a Veículo</label>
+      <select name="veiculo_id" class="form-select">
+        <option value="">Nenhum</option>
+        {% for v in veiculos %}
+        <option value="{{ v.id }}">{{ v.placa }} - {{ v.modelo }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Salvar</button>
+  <a href="{{ url_for('alertas.listar_alertas') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

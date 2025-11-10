@@ -169,18 +169,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-#### 4. Configure as variáveis de ambiente
-
-Crie um arquivo `.env` na raiz do projeto:
-
-```env
-SECRET_KEY=sua_chave_secreta_super_segura_aqui
-FLASK_APP=run.py
-FLASK_ENV=development
-DATABASE_URL=sqlite:///database.db
-```
-
-#### 5. Inicialize o banco de dados
+#### 4. Inicialize o banco de dados
 
 ```bash
 flask db init

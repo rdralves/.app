@@ -1,37 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
-<h3 class="mb-4">🚨 Alertas e Notificações</h3>
+<h3>🔔 Alertas</h3>
 
-{% if alertas %}
-<table class="table table-striped align-middle">
-    <thead class="table-dark">
-        <tr>
-            <th>Título</th>
-            <th>Descrição</th>
-            <th>Tipo</th>
-            <th>Data</th>
-            <th>Status</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for a in alertas %}
-        <tr class="{% if a.resolvido %}table-success{% endif %}">
-            <td>{{ a.titulo }}</td>
-            <td>{{ a.descricao }}</td>
-            <td>{{ a.tipo }}</td>
-            <td>{{ a.data_alerta.strftime('%d/%m/%Y %H:%M') }}</td>
-            <td>{{ 'Resolvido' if a.resolvido else 'Pendente' }}</td>
-            <td>
-                {% if not a.resolvido %}
-                <a href="{{ url_for('alertas.resolver_alerta', id=a.id) }}" class="btn btn-success btn-sm">Resolver</a>
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
+<a href="{{ url_for('alertas.adicionar_alerta') }}" class="btn btn-primary mb-3">Novo Alerta</a>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Tipo</th>
+      <th>Veículo</th>
+      <th>Data</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for alerta in alertas %}
+    <tr>
+      <td>{{ alerta.titulo }}</td>
+      <td>{{ alerta.tipo }}</td>
+      <td>{{ alerta.veiculo.placa if alerta.veiculo else '-' }}</td>
+      <td>{{ alerta.data_disparo.strftime('%d/%m/%Y') if alerta.data_disparo else '—' }}</td>
+      <td>
+        {% if alerta.resolvido %}
+          <span class="badge bg-success">Resolvido</span>
+        {% else %}
+          <span class="badge bg-danger">Pendente</span>
+        {% endif %}
+      </td>
+      <td>
+        {% if not alerta.resolvido %}
+        <a href="{{ url_for('alertas.resolver_alerta', alerta_id=alerta.id) }}" class="btn btn-sm btn-success">Resolver</a>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
-{% else %}
-<p>Nenhum alerta no momento 🚀</p>
-{% endif %}
+
 {% endblock %}

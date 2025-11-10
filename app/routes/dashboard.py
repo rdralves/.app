@@ -40,6 +40,6 @@ def index():
         total_veiculos=Veiculo.query.count(),
         total_motoristas=Motorista.query.count(),
         veiculos_manutencao=Veiculo.query.filter_by(
-            status='EM_MANUTENCAO').count(),
+            status='MANUTENCAO').count(),
         alertas_ativos=alertas_ativos
     )
