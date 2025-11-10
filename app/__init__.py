@@ -46,9 +46,9 @@ def create_app():
     app.register_blueprint(bp_user)
     app.register_blueprint(veiculos_bp)
 
-    from app.tasks.scheduler import iniciar_scheduler
+    # from app.tasks.scheduler import iniciar_scheduler #temporariamente suspenso, para atualização.
 
-    iniciar_scheduler(app)
+    # iniciar_scheduler(app)
 
 # Criaçao do banco de dados
     with app.app_context():
