@@ -1,8 +1,8 @@
 # 🚗 Sistema de Frotas - Fleet Management System
 
 [![Python](https://img.shields.io/badge/Python-3.x-blue.svg)](https://www.python.org/)
-[![Flask](https://img.shields.io/badge/Flask-2.x-green.svg)](https://flask.palletsprojects.com/)
-[![SQLite](https://img.shields.io/badge/SQLite-3-lightgrey.svg)](https://www.sqlite.org/)
+[![Flask](https://img.shields.io/badge/Flask-3.x-green.svg)](https://flask.palletsprojects.com/)
+[![postegres](https://img.shields.io/badge/SQLite-3-lightgrey.svg)](https://www.sqlite.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 > Sistema web completo de autenticação e gerenciamento construído com Flask, focado em segurança e escalabilidade. Ideal como base para sistemas de gestão de frotas, logística e mobilidade.
